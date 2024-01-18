@@ -13,5 +13,5 @@ indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true
 
-[*.js] # For any JavaScript files
+[*.{js,jsx}] # For any JavaScript files
 quote_type = single
