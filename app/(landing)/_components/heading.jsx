@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -12,7 +10,7 @@ const Heading = () => {
       <h3 className="font-medium text-base sm:text-xl md:text-2xl">
         Glitter is a minimal, flexible and personal note-taking application.
       </h3>
-      <Button>
+      <Button variant="tint">
         Get Glitter free
         <ArrowRight className="w-4 h-4 ml-2" />
       </Button>
