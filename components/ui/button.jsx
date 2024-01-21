@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
@@ -14,7 +16,7 @@ const buttonVariants = cva(
         secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        tint: 'bg-tint text-primary-foreground shadow hover:bg-tint/90',
+        tint: 'bg-tint text-[#f9fafd] shadow hover:bg-tint/90',
       },
       size: {
         default: 'h-9 px-4 py-2',
