@@ -1,3 +1,4 @@
+import { ConvexClientProvider } from '@/components/providers/convex-provider';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import './globals.css';
@@ -8,9 +9,11 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" storageKey="glitter-theme" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        <ConvexClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" storageKey="glitter-theme" enableSystem disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );
