@@ -33,7 +33,7 @@ const Heading = () => {
       )}
       {isAuthenticated && !isLoading && (
         <Button variant="tint" asChild>
-          <Link href="/documents">
+          <Link href="/notes">
             Enter Glitter
             <ArrowRight className="w-4 h-4 ml-2" />
           </Link>

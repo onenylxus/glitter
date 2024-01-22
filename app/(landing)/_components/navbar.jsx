@@ -32,7 +32,7 @@ const Navbar = () => {
         {isAuthenticated && !isLoading && (
           <>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/documents">Enter Glitter</Link>
+              <Link href="/notes">Enter Glitter</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
           </>
