@@ -1,4 +1,4 @@
-import { mutation } from './_generated/server';
+import { mutation, query } from './_generated/server';
 import { v } from 'convex/values';
 
 export const create = mutation({
@@ -22,5 +22,18 @@ export const create = mutation({
     });
 
     return note;
+  },
+});
+
+export const read = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error('User not authenticated');
+    }
+
+    const notes = await ctx.db.query('notes').collect();
+
+    return notes;
   },
 });
