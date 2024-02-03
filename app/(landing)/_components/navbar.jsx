@@ -13,16 +13,21 @@ const Navbar = () => {
   const scrolled = useScrollTop();
 
   return (
-    <div className={cn('flex fixed w-full top-0 p-6 items-center bg-background z-50', scrolled && 'border-b shadow-sm')}>
+    <div
+      className={cn(
+        'fixed top-0 z-50 flex w-full items-center bg-background p-6',
+        scrolled && 'border-b shadow-sm'
+      )}
+    >
       <Logo />
-      <div className="flex w-full md:ml-auto items-center justify-between md:justify-end gap-x-2">
-        {isLoading && (
-          <Spinner />
-        )}
+      <div className="flex w-full items-center justify-between gap-x-2 md:ml-auto md:justify-end">
+        {isLoading && <Spinner />}
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
-              <Button variant="ghost" size="sm">Login</Button>
+              <Button variant="ghost" size="sm">
+                Login
+              </Button>
             </SignInButton>
             <SignInButton variant="tint" mode="modal">
               <Button size="sm">Get Glitter free</Button>

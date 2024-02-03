@@ -10,7 +10,13 @@ const RootLayout = ({ children }) => {
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ConvexClientProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" storageKey="glitter-theme" enableSystem disableTransitionOnChange>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            storageKey="glitter-theme"
+            enableSystem
+            disableTransitionOnChange
+          >
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
@@ -27,8 +33,8 @@ export const metadata = {
       {
         url: '/favicon.ico',
         href: '/favicon.ico',
-      }
-    ]
+      },
+    ],
   },
 };
 

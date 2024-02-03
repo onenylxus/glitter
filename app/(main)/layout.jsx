@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { redirect } from 'next/navigation';
 import { useConvexAuth } from 'convex/react';
@@ -10,10 +10,10 @@ const MainLayout = ({ children }) => {
 
   if (isLoading) {
     return (
-      <div className="flex h-full justify-center items-center">
+      <div className="flex h-full items-center justify-center">
         <Spinner size="lg" />
       </div>
-    )
+    );
   }
 
   if (!isAuthenticated) {
@@ -23,9 +23,7 @@ const MainLayout = ({ children }) => {
   return (
     <div className="flex h-full">
       <Sidebar />
-      <main className="h-full flex-1 overflow-y-auto">
-        {children}
-      </main>
+      <main className="h-full flex-1 overflow-y-auto">{children}</main>
     </div>
   );
 };

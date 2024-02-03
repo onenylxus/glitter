@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "env_dev": "concurrently --kill-others -n \"next,convex\" -c \"bgRed.bold,bgBlue.bold\" \"yarn dev\" \"yarn convex\"",
+    "env_dev": "yarn format && concurrently --kill-others -n \"next,convex\" -c \"bgRed.bold,bgBlue.bold\" \"yarn dev\" \"yarn convex\"",
+    "format": "prettier --write --ignore-path .gitignore .",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -33,7 +34,10 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "eslint-config-prettier": "^9.1.0",
     "postcss": "^8",
+    "prettier": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.3.0"
   }
 }
