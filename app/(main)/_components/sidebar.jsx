@@ -1,15 +1,15 @@
 'use client';
 
 import { ChevronsLeft, MenuIcon } from 'lucide-react';
+import { UserItem } from './user-item';
 import { api } from '@/convex/_generated/api';
 import { cn } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { usePathname } from 'next/navigation';
 import { useQuery } from 'convex/react';
-import UserItem from './user-item';
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
   const notes = useQuery(api.notes.read);
@@ -116,11 +116,7 @@ const Sidebar = () => {
           <UserItem />
         </div>
         <div className="mt-4">
-          {notes && notes.map((note) => (
-            <p key={note._id}>
-              {note.title}
-            </p>
-          ))}
+          {notes && notes.map((note) => <p key={note._id}>{note.title}</p>)}
         </div>
         <div
           onMouseDown={handleMouseDown}
@@ -149,5 +145,3 @@ const Sidebar = () => {
     </>
   );
 };
-
-export default Sidebar;

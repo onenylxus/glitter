@@ -6,13 +6,12 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { SignOutButton, useUser } from '@clerk/clerk-react';
 
-const UserItem = () => {
+export const UserItem = () => {
   const { user } = useUser();
 
   return (
@@ -69,5 +68,3 @@ const UserItem = () => {
     </DropdownMenu>
   );
 };
-
-export default UserItem;

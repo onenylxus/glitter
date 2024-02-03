@@ -3,11 +3,11 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SignInButton } from '@clerk/clerk-react';
+import { Spinner } from '@/components/spinner';
 import { useConvexAuth } from 'convex/react';
 import Link from 'next/link';
-import Spinner from '@/components/spinner';
 
-const Heading = () => {
+export const Heading = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
 
   return (
@@ -44,5 +44,3 @@ const Heading = () => {
     </div>
   );
 };
-
-export default Heading;

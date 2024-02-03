@@ -1,9 +1,9 @@
 'use client';
 
+import { Sidebar } from './_components/sidebar';
+import { Spinner } from '@/components/spinner';
 import { redirect } from 'next/navigation';
 import { useConvexAuth } from 'convex/react';
-import Sidebar from './_components/sidebar';
-import Spinner from '@/components/spinner';
 
 const MainLayout = ({ children }) => {
   const { isAuthenticated, isLoading } = useConvexAuth();

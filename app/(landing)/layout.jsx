@@ -1,6 +1,6 @@
 'use client';
 
-import Navbar from './_components/navbar';
+import { Navbar } from './_components/navbar';
 
 const LandingLayout = ({ children }) => {
   return (
