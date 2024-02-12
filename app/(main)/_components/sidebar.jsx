@@ -1,18 +1,27 @@
 'use client';
 
-import { ChevronsLeft, MenuIcon } from 'lucide-react';
+import {
+  ChevronsLeft,
+  MenuIcon,
+  PlusCircle,
+  Search,
+  Settings,
+} from 'lucide-react';
+import { NoteList } from './note-list';
+import { SidebarItem } from './sidebar-item';
 import { UserItem } from './user-item';
 import { api } from '@/convex/_generated/api';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { usePathname } from 'next/navigation';
-import { useQuery } from 'convex/react';
+import { useMutation } from 'convex/react';
 
 export const Sidebar = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const notes = useQuery(api.notes.read);
+  const create = useMutation(api.notes.create);
   const isResizingRef = useRef(false);
   const sidebarRef = useRef(null);
   const navbarRef = useRef(null);
@@ -92,6 +101,15 @@ export const Sidebar = () => {
     isMobile && collapse();
   }, [isMobile, pathname]);
 
+  const onCreate = () => {
+    const promise = create({ title: 'Untitled' });
+    toast.promise(promise, {
+      loading: 'Creaing a new note...',
+      success: 'Created new note',
+      error: 'Failed to create note',
+    });
+  };
+
   return (
     <>
       <aside
@@ -106,7 +124,7 @@ export const Sidebar = () => {
           onClick={collapse}
           role="button"
           className={cn(
-            'absolute right-2 top-3 h-6 w-6 rounded-sm text-muted-foreground opacity-0 transition hover:bg-neutral-300 group-hover/sidebar:opacity-100 dark:hover:bg-neutral-600',
+            'absolute right-2 top-3 h-6 w-6 rounded-sm text-muted-foreground opacity-0 transition hover:bg-zinc-300 group-hover/sidebar:opacity-100 dark:hover:bg-zinc-600',
             isMobile && 'opacity-100'
           )}
         >
@@ -114,9 +132,12 @@ export const Sidebar = () => {
         </div>
         <div>
           <UserItem />
+          <SidebarItem label="Search" icon={Search} isSearch />
+          <SidebarItem label="Settings" icon={Settings} />
+          <SidebarItem label="New Page" icon={PlusCircle} onClick={onCreate} />
         </div>
         <div className="mt-4">
-          {notes && notes.map((note) => <p key={note._id}>{note.title}</p>)}
+          <NoteList />
         </div>
         <div
           onMouseDown={handleMouseDown}

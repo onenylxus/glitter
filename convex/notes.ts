@@ -26,13 +26,24 @@ export const create = mutation({
 });
 
 export const read = query({
-  handler: async (ctx) => {
+  args: {
+    parent: v.optional(v.id('notes')),
+  },
+  handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
       throw new Error('User not authenticated');
     }
 
-    const notes = await ctx.db.query('notes').collect();
+    const userId = identity.subject;
+    const notes = await ctx.db
+      .query('notes')
+      .withIndex('by_user_parent', (q) =>
+        q.eq('userId', userId).eq('parent', args.parent)
+      )
+      .filter((q) => q.eq(q.field('isArchived'), false))
+      .order('desc')
+      .collect();
 
     return notes;
   },

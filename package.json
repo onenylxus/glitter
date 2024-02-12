@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "env_dev": "yarn format && concurrently --kill-others -n \"next,convex\" -c \"bgRed.bold,bgBlue.bold\" \"yarn dev\" \"yarn convex\"",
-    "format": "prettier --write --ignore-path .gitignore .",
+    "format": "prettier --write --ignore-path .prettierignore .",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
