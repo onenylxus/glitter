@@ -7,6 +7,7 @@ import {
   Search,
   Settings,
 } from 'lucide-react';
+import { NoteList } from './note-list';
 import { SidebarItem } from './sidebar-item';
 import { UserItem } from './user-item';
 import { api } from '@/convex/_generated/api';
@@ -123,7 +124,7 @@ export const Sidebar = () => {
           onClick={collapse}
           role="button"
           className={cn(
-            'absolute right-2 top-3 h-6 w-6 rounded-sm text-muted-foreground opacity-0 transition hover:bg-neutral-300 group-hover/sidebar:opacity-100 dark:hover:bg-neutral-600',
+            'absolute right-2 top-3 h-6 w-6 rounded-sm text-muted-foreground opacity-0 transition hover:bg-zinc-300 group-hover/sidebar:opacity-100 dark:hover:bg-zinc-600',
             isMobile && 'opacity-100'
           )}
         >
@@ -135,7 +136,9 @@ export const Sidebar = () => {
           <SidebarItem label="Settings" icon={Settings} />
           <SidebarItem label="New Page" icon={PlusCircle} onClick={onCreate} />
         </div>
-        <div className="mt-4"></div>
+        <div className="mt-4">
+          <NoteList />
+        </div>
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}

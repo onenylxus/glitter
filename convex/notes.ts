@@ -25,7 +25,7 @@ export const create = mutation({
   },
 });
 
-export const readSidebar = query({
+export const read = query({
   args: {
     parent: v.optional(v.id('notes')),
   },
@@ -44,19 +44,6 @@ export const readSidebar = query({
       .filter((q) => q.eq(q.field('isArchived'), false))
       .order('desc')
       .collect();
-
-    return notes;
-  },
-});
-
-export const read = query({
-  handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
-      throw new Error('User not authenticated');
-    }
-
-    const notes = await ctx.db.query('notes').collect();
 
     return notes;
   },

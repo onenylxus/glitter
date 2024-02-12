@@ -2,4 +2,7 @@
 **/.git
 **/.gitignore
 **/node_modules
+.next
+convex/_generated
+next-env.d.ts
 yarn.lock
