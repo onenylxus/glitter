@@ -15,12 +15,11 @@ import { toast } from 'sonner';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { usePathname } from 'next/navigation';
-import { useMutation, useQuery } from 'convex/react';
+import { useMutation } from 'convex/react';
 
 export const Sidebar = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const notes = useQuery(api.notes.read);
   const create = useMutation(api.notes.create);
   const isResizingRef = useRef(false);
   const sidebarRef = useRef(null);
@@ -136,9 +135,7 @@ export const Sidebar = () => {
           <SidebarItem label="Settings" icon={Settings} />
           <SidebarItem label="New Page" icon={PlusCircle} onClick={onCreate} />
         </div>
-        <div className="mt-4">
-          {notes && notes.map((note) => <p key={note._id}>{note.title}</p>)}
-        </div>
+        <div className="mt-4"></div>
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
