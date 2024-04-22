@@ -3,6 +3,7 @@
 import {
   ChevronsLeft,
   MenuIcon,
+  Plus,
   PlusCircle,
   Search,
   Settings,
@@ -15,8 +16,8 @@ import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
-import { usePathname } from 'next/navigation';
 import { useMutation } from 'convex/react';
+import { usePathname } from 'next/navigation';
 
 export const Sidebar = () => {
   const pathname = usePathname();
@@ -138,6 +139,7 @@ export const Sidebar = () => {
         </div>
         <div className="mt-4">
           <NoteList />
+          <SidebarItem label="Add a page" icon={Plus} onClick={onCreate} />
         </div>
         <div
           onMouseDown={handleMouseDown}
