@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "env_dev": "yarn format && concurrently --kill-others -n \"next,convex\" -c \"bgRed.bold,bgBlue.bold\" \"yarn dev\" \"yarn convex\"",
+    "env:dev": "yarn format && concurrently --kill-others -n \"next,convex\" -c \"bgRed.bold,bgBlue.bold\" \"yarn dev\" \"yarn convex\"",
     "format": "prettier --write --ignore-path .prettierignore .",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "convex": "npx convex dev"
+    "convex": "npx convex dev",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.30.3",
@@ -32,10 +34,14 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.2",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
