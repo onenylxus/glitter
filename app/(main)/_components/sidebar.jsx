@@ -7,8 +7,14 @@ import {
   PlusCircle,
   Search,
   Settings,
+  Trash,
 } from 'lucide-react';
 import { NoteList } from './note-list';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { SidebarItem } from './sidebar-item';
 import { UserItem } from './user-item';
 import { api } from '@/convex/_generated/api';
@@ -140,6 +146,15 @@ export const Sidebar = () => {
         <div className="mt-4">
           <NoteList />
           <SidebarItem label="Add a page" icon={Plus} onClick={onCreate} />
+          <Popover>
+            <PopoverTrigger className="mt-4 w-full">
+              <SidebarItem label="Trash" icon={Trash} />
+            </PopoverTrigger>
+            <PopoverContent
+              className="w-72 p-0"
+              side={isMobile ? 'bottom' : 'right'}
+            ></PopoverContent>
+          </Popover>
         </div>
         <div
           onMouseDown={handleMouseDown}
