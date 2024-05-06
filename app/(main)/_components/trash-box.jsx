@@ -7,6 +7,7 @@ import { api } from '@/convex/_generated/api';
 import { useMutation, useQuery } from 'convex/react';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { ConfirmModal } from '@/components/modals/confirm-modal';
 
 export const TrashBox = () => {
   const router = useRouter();
@@ -16,9 +17,11 @@ export const TrashBox = () => {
   const remove = useMutation(api.notes.remove);
   const [search, setSearch] = useState('');
 
-  const filteredNotes = notes ? notes.filter((note) => {
-    return note.title.toLowerCase().includes(search.toLowerCase());
-  }) : undefined;
+  const filteredNotes = notes
+    ? notes.filter((note) => {
+        return note.title.toLowerCase().includes(search.toLowerCase());
+      })
+    : undefined;
 
   const onClick = (noteId) => {
     router.push(`/notes/${noteId}`);
@@ -38,8 +41,7 @@ export const TrashBox = () => {
     });
   };
 
-  const onDelete = (e, id) => {
-    e.stopPropagation();
+  const onRemove = (id) => {
     if (!id) {
       return;
     }
@@ -79,19 +81,34 @@ export const TrashBox = () => {
         <p className="hidden pb-2 text-center text-xs text-muted-foreground last:block">
           No notes found.
         </p>
-        {filteredNotes && filteredNotes.map((note) => (
-          <div key={note._id} role="button" onClick={() => onClick(note._id)} className="text-sm rounded-sm w-full hover:bg-primary/5 flex items-center text-primary justify-between">
-            <span className="truncate pl-2">{note.title}</span>
-            <div className="flex items-center">
-              <div onClick={(e) => onRestore(e, note._id)} role="button" className="rounded-sm p-2 hover:bg-zinc-200">
-                <Undo className="h-4 w-4 text-muted-foreground" />
-              </div>
-              <div role="button" className="rounded-sm p-2 hover:bg-zinc-200">
-                <Trash className="h-4 w-4 text-muted-foreground" />
+        {filteredNotes &&
+          filteredNotes.map((note) => (
+            <div
+              key={note._id}
+              role="button"
+              onClick={() => onClick(note._id)}
+              className="flex w-full items-center justify-between rounded-sm text-sm text-primary hover:bg-primary/5"
+            >
+              <span className="truncate pl-2">{note.title}</span>
+              <div className="flex items-center">
+                <div
+                  onClick={(e) => onRestore(e, note._id)}
+                  role="button"
+                  className="rounded-sm p-2 hover:bg-zinc-200"
+                >
+                  <Undo className="h-4 w-4 text-muted-foreground" />
+                </div>
+                <ConfirmModal onConfirm={() => onRemove(note._id)}>
+                  <div
+                    role="button"
+                    className="rounded-sm p-2 hover:bg-zinc-200"
+                  >
+                    <Trash className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                </ConfirmModal>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
