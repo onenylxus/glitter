@@ -16,6 +16,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { SidebarItem } from './sidebar-item';
+import { TrashBox } from './trash-box';
 import { UserItem } from './user-item';
 import { api } from '@/convex/_generated/api';
 import { cn } from '@/lib/utils';
@@ -153,7 +154,9 @@ export const Sidebar = () => {
             <PopoverContent
               className="w-72 p-0"
               side={isMobile ? 'bottom' : 'right'}
-            ></PopoverContent>
+            >
+              <TrashBox />
+            </PopoverContent>
           </Popover>
         </div>
         <div
