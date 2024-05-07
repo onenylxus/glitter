@@ -1,5 +1,6 @@
 'use client';
 
+import { SearchCommand } from '@/components/search-command';
 import { Sidebar } from './_components/sidebar';
 import { Spinner } from '@/components/spinner';
 import { redirect } from 'next/navigation';
@@ -23,7 +24,10 @@ const MainLayout = ({ children }) => {
   return (
     <div className="flex h-full">
       <Sidebar />
-      <main className="h-full flex-1 overflow-y-auto">{children}</main>
+      <main className="h-full flex-1 overflow-y-auto">
+        <SearchCommand />
+        {children}
+      </main>
     </div>
   );
 };

@@ -25,11 +25,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { useMutation } from 'convex/react';
 import { usePathname } from 'next/navigation';
+import { useSearch } from '@/hooks/use-search';
 
 export const Sidebar = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
   const create = useMutation(api.notes.create);
+  const search = useSearch();
   const isResizingRef = useRef(false);
   const sidebarRef = useRef(null);
   const navbarRef = useRef(null);
@@ -140,7 +142,12 @@ export const Sidebar = () => {
         </div>
         <div>
           <UserItem />
-          <SidebarItem label="Search" icon={Search} isSearch />
+          <SidebarItem
+            label="Search"
+            icon={Search}
+            onClick={search.onOpen}
+            isSearch
+          />
           <SidebarItem label="Settings" icon={Settings} />
           <SidebarItem label="New Page" icon={PlusCircle} onClick={onCreate} />
         </div>
