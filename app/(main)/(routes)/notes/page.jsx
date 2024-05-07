@@ -30,7 +30,7 @@ const NotesPage = () => {
         alt="Add Notes"
       />
       <h2 className="text-lg font-medium">
-        Welcome to {user.firstName}&apos;s Notebook.
+        Welcome to {user.fullName}&apos;s Notebook.
       </h2>
       <Button variant="tint" onClick={onCreate}>
         <PlusCircle className="mr-2 h-4 w-4" />

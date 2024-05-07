@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../ui/alert-dialog';
+} from '@/components/ui/alert-dialog';
 
 export const ConfirmModal = ({ children, onConfirm }) => {
   const handleConfirm = (e) => {
