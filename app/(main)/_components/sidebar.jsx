@@ -26,12 +26,14 @@ import { useMediaQuery } from '@uidotdev/usehooks';
 import { useMutation } from 'convex/react';
 import { usePathname } from 'next/navigation';
 import { useSearch } from '@/hooks/use-search';
+import { useSettings } from '@/hooks/use-settings';
 
 export const Sidebar = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
   const create = useMutation(api.notes.create);
   const search = useSearch();
+  const settings = useSettings();
   const isResizingRef = useRef(false);
   const sidebarRef = useRef(null);
   const navbarRef = useRef(null);
@@ -148,7 +150,11 @@ export const Sidebar = () => {
             onClick={search.onOpen}
             isSearch
           />
-          <SidebarItem label="Settings" icon={Settings} />
+          <SidebarItem
+            label="Settings"
+            icon={Settings}
+            onClick={settings.onOpen}
+          />
           <SidebarItem label="New Page" icon={PlusCircle} onClick={onCreate} />
         </div>
         <div className="mt-4">
