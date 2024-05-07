@@ -20,11 +20,8 @@ export const SearchCommand = () => {
   const { user } = useUser();
   const router = useRouter();
   const notes = useQuery(api.notes.getSearch);
+  const search = useSearch();
   const [mounted, setMounted] = useState(false);
-
-  const isOpen = useSearch((store) => store.isOpen);
-  const onClose = useSearch((store) => store.onClose);
-  const toggle = useSearch((store) => store.toggle);
 
   useEffect(() => {
     setMounted(true);
@@ -34,17 +31,17 @@ export const SearchCommand = () => {
     const keydown = (e) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        toggle();
+        search.toggle();
       }
     };
 
     document.addEventListener('keydown', keydown);
     return () => document.removeEventListener('keydown', keydown);
-  }, [toggle]);
+  }, [search]);
 
   const onSelect = (id) => {
     router.push(`/notes/${id}`);
-    onClose();
+    search.onClose();
   };
 
   if (!mounted) {
@@ -52,15 +49,13 @@ export const SearchCommand = () => {
   }
 
   return (
-    <CommandDialog open={isOpen} onOpenChange={onClose}>
+    <CommandDialog open={search.isOpen} onOpenChange={search.onClose}>
       <CommandInput placeholder={`Search ${user.fullName}'s Notebook...`} />
       <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
         {notes && notes.length > 0 && (
-          <CommandEmpty>No results found.</CommandEmpty>
-        )}
-        <CommandGroup heading="Notes">
-          {notes &&
-            notes.map((note) => (
+          <CommandGroup heading="Notes">
+            {notes.map((note) => (
               <CommandItem
                 key={note._id}
                 value={`${note._id}-${note.title}`}
@@ -75,7 +70,8 @@ export const SearchCommand = () => {
                 <span>{note.title}</span>
               </CommandItem>
             ))}
-        </CommandGroup>
+          </CommandGroup>
+        )}
       </CommandList>
     </CommandDialog>
   );
