@@ -209,3 +209,31 @@ export const getSearch = query({
     return notes;
   },
 });
+
+export const getById = query({
+  args: {
+    id: v.id('notes'),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    const note = await ctx.db.get(args.id);
+    if (!note) {
+      throw new Error('Note not found');
+    }
+    if (note.isPublished && !note.isArchived) {
+      return note;
+    }
+
+    if (!identity) {
+      throw new Error('User not authenticated');
+    }
+
+    const userId = identity.subject;
+    if (note.userId !== userId) {
+      throw new Error('Note not authorized');
+    }
+
+    return note;
+  },
+});

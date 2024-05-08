@@ -9,6 +9,7 @@ import {
   Settings,
   Trash,
 } from 'lucide-react';
+import { Navbar } from './navbar';
 import { NoteList } from './note-list';
 import {
   Popover,
@@ -24,11 +25,12 @@ import { toast } from 'sonner';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { useMutation } from 'convex/react';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { useSearch } from '@/hooks/use-search';
 import { useSettings } from '@/hooks/use-settings';
 
 export const Sidebar = () => {
+  const params = useParams();
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
   const create = useMutation(api.notes.create);
@@ -186,15 +188,19 @@ export const Sidebar = () => {
           isMobile && 'left-0 w-full'
         )}
       >
-        <nav className="w-full bg-transparent px-3 py-2">
-          {isCollapsed && (
-            <MenuIcon
-              onClick={resetWidth}
-              role="button"
-              className="h-6 w-6 text-muted-foreground"
-            />
-          )}
-        </nav>
+        {!!params.noteId ? (
+          <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
+        ) : (
+          <nav className="w-full bg-transparent px-3 py-2">
+            {isCollapsed && (
+              <MenuIcon
+                onClick={resetWidth}
+                role="button"
+                className="h-6 w-6 text-muted-foreground"
+              />
+            )}
+          </nav>
+        )}
       </div>
     </>
   );
