@@ -1,6 +1,7 @@
 'use client';
 
 import { MenuIcon } from 'lucide-react';
+import { Title } from './title';
 import { api } from '@/convex/_generated/api';
 import { useParams } from 'next/navigation';
 import { useQuery } from 'convex/react';
@@ -10,7 +11,11 @@ export const Navbar = ({ isCollapsed, onResetWidth }) => {
 
   const note = useQuery(api.notes.getById, { id: params.noteId });
   if (note === undefined) {
-    return <p>Loading</p>;
+    return (
+      <nav className="flex w-full items-center bg-background px-3 py-2 dark:bg-[#1f1f1f]">
+        <Title.Skeleton />
+      </nav>
+    );
   }
   if (note === null) {
     return null;
@@ -26,7 +31,9 @@ export const Navbar = ({ isCollapsed, onResetWidth }) => {
             className="h-6 w-6 text-muted-foreground"
           />
         )}
-        <div className="flex w-full items-center justify-between">Navbar</div>
+        <div className="flex w-full items-center justify-between">
+          <Title data={note} />
+        </div>
       </nav>
     </>
   );

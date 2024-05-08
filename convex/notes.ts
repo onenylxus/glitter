@@ -237,3 +237,34 @@ export const getById = query({
     return note;
   },
 });
+
+export const update = mutation({
+  args: {
+    id: v.id('notes'),
+    title: v.optional(v.string()),
+    content: v.optional(v.string()),
+    coverImage: v.optional(v.string()),
+    icon: v.optional(v.string()),
+    isPublished: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error('User not authenticated');
+    }
+
+    const userId = identity.subject;
+    const { id, ...rest } = args;
+    const target = await ctx.db.get(args.id);
+    if (!target) {
+      throw new Error('Note not found');
+    }
+    if (target.userId !== userId) {
+      throw new Error('Note not authorized');
+    }
+
+    const note = await ctx.db.patch(args.id, { ...rest });
+
+    return note;
+  },
+});

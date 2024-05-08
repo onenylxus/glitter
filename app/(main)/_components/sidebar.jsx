@@ -39,8 +39,8 @@ export const Sidebar = () => {
   const isResizingRef = useRef(false);
   const sidebarRef = useRef(null);
   const navbarRef = useRef(null);
-  const [isResetting, setIsResetting] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(isMobile);
+  const [resetting, setResetting] = useState(false);
+  const [collapsed, setCollapsed] = useState(isMobile);
 
   const handleMouseDown = (event) => {
     event.preventDefault();
@@ -81,8 +81,8 @@ export const Sidebar = () => {
 
   const resetWidth = () => {
     if (sidebarRef.current && navbarRef.current) {
-      setIsCollapsed(false);
-      setIsResetting(true);
+      setCollapsed(false);
+      setResetting(true);
 
       sidebarRef.current.style.width = isMobile ? '100%' : '240px';
       navbarRef.current.style.setProperty('left', isMobile ? '100%' : '240px');
@@ -91,14 +91,14 @@ export const Sidebar = () => {
         isMobile ? '0' : 'calc(100% - 240px)'
       );
 
-      setTimeout(() => setIsResetting(false), 300);
+      setTimeout(() => setResetting(false), 300);
     }
   };
 
   const collapse = () => {
     if (sidebarRef.current && navbarRef.current) {
-      setIsCollapsed(true);
-      setIsResetting(true);
+      setCollapsed(true);
+      setResetting(true);
 
       sidebarRef.current.style.width = '0';
       navbarRef.current.style.setProperty('left', '0');
@@ -130,7 +130,7 @@ export const Sidebar = () => {
         ref={sidebarRef}
         className={cn(
           'group/sidebar relative z-top flex h-full w-60 flex-col overflow-y-auto bg-secondary',
-          isResetting && 'transtion-all duration-300 ease-in-out',
+          resetting && 'transtion-all duration-300 ease-in-out',
           isMobile && 'w-0'
         )}
       >
@@ -184,15 +184,15 @@ export const Sidebar = () => {
         ref={navbarRef}
         className={cn(
           'absolute left-60 top-0 z-top w-[calc(100%-240px)]',
-          isResetting && 'transition-all duration-300 ease-in-out',
+          resetting && 'transition-all duration-300 ease-in-out',
           isMobile && 'left-0 w-full'
         )}
       >
         {!!params.noteId ? (
-          <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
+          <Navbar isCollapsed={collapsed} onResetWidth={resetWidth} />
         ) : (
           <nav className="w-full bg-transparent px-3 py-2">
-            {isCollapsed && (
+            {collapsed && (
               <MenuIcon
                 onClick={resetWidth}
                 role="button"
