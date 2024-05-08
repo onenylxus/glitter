@@ -209,3 +209,62 @@ export const getSearch = query({
     return notes;
   },
 });
+
+export const getById = query({
+  args: {
+    id: v.id('notes'),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    const note = await ctx.db.get(args.id);
+    if (!note) {
+      throw new Error('Note not found');
+    }
+    if (note.isPublished && !note.isArchived) {
+      return note;
+    }
+
+    if (!identity) {
+      throw new Error('User not authenticated');
+    }
+
+    const userId = identity.subject;
+    if (note.userId !== userId) {
+      throw new Error('Note not authorized');
+    }
+
+    return note;
+  },
+});
+
+export const update = mutation({
+  args: {
+    id: v.id('notes'),
+    title: v.optional(v.string()),
+    content: v.optional(v.string()),
+    coverImage: v.optional(v.string()),
+    icon: v.optional(v.string()),
+    isPublished: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error('User not authenticated');
+    }
+
+    const userId = identity.subject;
+    const { id, ...rest } = args;
+    const target = await ctx.db.get(args.id);
+    if (!target) {
+      throw new Error('Note not found');
+    }
+    if (target.userId !== userId) {
+      throw new Error('Note not authorized');
+    }
+
+    const note = await ctx.db.patch(args.id, { ...rest });
+
+    return note;
+  },
+});
