@@ -1,5 +1,6 @@
 'use client';
 
+import { Banner } from './banner';
 import { MenuIcon } from 'lucide-react';
 import { Title } from './title';
 import { api } from '@/convex/_generated/api';
@@ -35,6 +36,7 @@ export const Navbar = ({ isCollapsed, onResetWidth }) => {
           <Title data={note} />
         </div>
       </nav>
+      {note.isArchived && <Banner noteId={note._id} />}
     </>
   );
 };

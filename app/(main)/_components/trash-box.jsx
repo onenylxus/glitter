@@ -29,9 +29,6 @@ export const TrashBox = () => {
 
   const onRestore = (e, id) => {
     e.stopPropagation();
-    if (!id) {
-      return;
-    }
 
     const promise = restore({ id });
     toast.promise(promise, {
@@ -42,10 +39,6 @@ export const TrashBox = () => {
   };
 
   const onRemove = (id) => {
-    if (!id) {
-      return;
-    }
-
     const promise = remove({ id });
     toast.promise(promise, {
       loading: 'Deleting note...',
