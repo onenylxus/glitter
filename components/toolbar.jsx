@@ -11,6 +11,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 export const Toolbar = ({ data, preview }) => {
   const inputRef = useRef(null);
   const update = useMutation(api.notes.update);
+  const removeIcon = useMutation(api.notes.removeIcon);
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(data.title);
 
@@ -45,17 +46,30 @@ export const Toolbar = ({ data, preview }) => {
     }
   };
 
+  const onIconSelect = (icon) => {
+    update({
+      id: data._id,
+      icon,
+    });
+  };
+
+  const onIconRemove = () => {
+    removeIcon({
+      id: data._id,
+    });
+  };
+
   return (
     <div className="group relative pl-[54px]">
       {!!data.icon && !preview && (
         <div className="group/icon flex items-center gap-x-2 pt-6">
-          <IconPicker onChange={() => {}}>
+          <IconPicker onChange={onIconSelect}>
             <p className="text-6xl transition hover:opacity-75">{data.icon}</p>
           </IconPicker>
           <Button
             variant="outline"
             size="icon"
-            onClick={() => {}}
+            onClick={onIconRemove}
             className="rounded-full text-xs text-muted-foreground opacity-0 transition group-hover/icon:opacity-100"
           >
             <X className="h-4 w-4" />
@@ -65,7 +79,7 @@ export const Toolbar = ({ data, preview }) => {
       {!!data.icon && preview && <p className="pt-6 text-6xl">{data.icon}</p>}
       <div className="flex items-center gap-x-1 py-4 opacity-0 group-hover:opacity-100">
         {!data.icon && !preview && (
-          <IconPicker onChange={() => {}} asChild>
+          <IconPicker onChange={onIconSelect} asChild>
             <Button
               variant="outline"
               size="sm"
