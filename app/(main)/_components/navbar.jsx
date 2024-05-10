@@ -1,6 +1,7 @@
 'use client';
 
 import { Banner } from './banner';
+import { Menu } from './menu';
 import { MenuIcon } from 'lucide-react';
 import { Title } from './title';
 import { api } from '@/convex/_generated/api';
@@ -13,8 +14,11 @@ export const Navbar = ({ isCollapsed, onResetWidth }) => {
   const note = useQuery(api.notes.getById, { id: params.noteId });
   if (note === undefined) {
     return (
-      <nav className="flex w-full items-center bg-background px-3 py-2 dark:bg-[#1f1f1f]">
+      <nav className="flex w-full items-center justify-between bg-background px-3 py-2 dark:bg-[#1f1f1f]">
         <Title.Skeleton />
+        <div className="flex items-center gap-x-2">
+          <Menu.Skeleton />
+        </div>
       </nav>
     );
   }
@@ -34,6 +38,9 @@ export const Navbar = ({ isCollapsed, onResetWidth }) => {
         )}
         <div className="flex w-full items-center justify-between">
           <Title data={note} />
+          <div className="flex items-center gap-x-2">
+            <Menu noteId={note._id} />
+          </div>
         </div>
       </nav>
       {note.isArchived && <Banner noteId={note._id} />}
