@@ -1,7 +1,11 @@
 'use client';
 
 import EmojiPicker from 'emoji-picker-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { useTheme } from 'next-themes';
 
 export const IconPicker = ({ onChange, children, asChild }) => {
@@ -10,11 +14,13 @@ export const IconPicker = ({ onChange, children, asChild }) => {
 
   return (
     <Popover>
-      <PopoverTrigger asChild={asChild}>
-        {children}
-      </PopoverTrigger>
-      <PopoverContent className="p-0 w-full border-none shadow-none">
-        <EmojiPicker height={350} theme={theme} onEmojiClick={(data) => onChange(data.emoji)}/>
+      <PopoverTrigger asChild={asChild}>{children}</PopoverTrigger>
+      <PopoverContent className="w-full border-none p-0 shadow-none">
+        <EmojiPicker
+          height={350}
+          theme={theme}
+          onEmojiClick={(data) => onChange(data.emoji)}
+        />
       </PopoverContent>
     </Popover>
   );
