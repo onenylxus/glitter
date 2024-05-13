@@ -10,9 +10,9 @@ export const CoverImageModal = () => {
     <Dialog open={coverImage.isOpen} onOpenChange={coverImage.onClose}>
       <DialogContent>
         <DialogHeader>
-          <h2 className="text-center text-lg font-semibold">Cover Image</h2>
+          <h2 className="text-center text-lg font-semibold">Cover image</h2>
         </DialogHeader>
-        <div>Upload Image</div>
+        <div>Upload image</div>
       </DialogContent>
     </Dialog>
   );

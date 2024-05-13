@@ -1,4 +1,5 @@
 import { ConvexClientProvider } from '@/components/providers/convex-provider';
+import { EdgeStoreProvider } from '@/lib/edgestore';
 import { Inter } from 'next/font/google';
 import { ModalProvider } from '@/components/providers/modal-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -12,17 +13,19 @@ const RootLayout = ({ children }) => {
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ConvexClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            storageKey="glitter-theme"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Toaster position="bottom-center" />
-            <ModalProvider />
-            {children}
-          </ThemeProvider>
+          <EdgeStoreProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              storageKey="glitter-theme"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Toaster position="bottom-center" />
+              <ModalProvider />
+              {children}
+            </ThemeProvider>
+          </EdgeStoreProvider>
         </ConvexClientProvider>
       </body>
     </html>
