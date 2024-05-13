@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { ImageIcon, X } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 import { api } from '@/convex/_generated/api';
 import { cn } from '@/lib/utils';
 import { useEdgeStore } from '@/lib/edgestore';
@@ -57,5 +58,11 @@ export const Cover = ({ url, preview }) => {
         </div>
       )}
     </div>
+  );
+};
+
+Cover.Skeleton = function CoverSkeleton() {
+  return (
+    <Skeleton className="w-full h-[12vh]" />
   );
 };
