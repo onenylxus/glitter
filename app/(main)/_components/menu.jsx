@@ -8,13 +8,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { MoreHorizontal, Trash } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 import { api } from '@/convex/_generated/api';
+import { toast } from 'sonner';
 import { useMutation } from 'convex/react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/clerk-react';
-import { toast } from 'sonner';
-import { MoreHorizontal, Trash } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export const Menu = ({ noteId }) => {
   const { user } = useUser();

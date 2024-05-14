@@ -8,10 +8,10 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { api } from '@/convex/_generated/api';
+import { toast } from 'sonner';
 import { useMutation } from 'convex/react';
 import { useOrigin } from '@/hooks/use-origin';
 import { useState } from 'react';
-import { toast } from 'sonner';
 
 export const Publish = ({ data }) => {
   const origin = useOrigin();
@@ -77,12 +77,29 @@ export const Publish = ({ data }) => {
               </p>
             </div>
             <div className="flex items-center">
-              <input className="flex-1 px-2 text-xs border rounded-l-md h-8 bg-muted truncate" value={url} disabled />
-              <Button onClick={onCopy} disabled={copied} className="rounded-l-none">
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              <input
+                className="h-8 flex-1 truncate rounded-l-md border bg-muted px-2 text-xs"
+                value={url}
+                disabled
+              />
+              <Button
+                onClick={onCopy}
+                disabled={copied}
+                className="rounded-l-none"
+              >
+                {copied ? (
+                  <Check className="h-4 w-4" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
               </Button>
             </div>
-            <Button size="sm" disabled={submitting} onClick={onUnpublish} className="w-full text-xs">
+            <Button
+              size="sm"
+              disabled={submitting}
+              onClick={onUnpublish}
+              className="w-full text-xs"
+            >
               Unpublish
             </Button>
           </div>

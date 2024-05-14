@@ -1,5 +1,6 @@
 'use client';
 
+import { ConfirmModal } from '@/components/modals/confirm-modal';
 import { Input } from '@/components/ui/input';
 import { Search, Trash, Undo } from 'lucide-react';
 import { Spinner } from '@/components/spinner';
@@ -7,7 +8,6 @@ import { api } from '@/convex/_generated/api';
 import { useMutation, useQuery } from 'convex/react';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { ConfirmModal } from '@/components/modals/confirm-modal';
 
 export const TrashBox = () => {
   const router = useRouter();

@@ -1,12 +1,12 @@
 'use client';
 
-import EmojiPicker from 'emoji-picker-react';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { useTheme } from 'next-themes';
+import EmojiPicker from 'emoji-picker-react';
 
 export const IconPicker = ({ onChange, children, asChild }) => {
   const { resolvedTheme } = useTheme();

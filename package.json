@@ -47,6 +47,8 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@types/node": "20.12.12",
+    "@types/react": "18.3.2",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",

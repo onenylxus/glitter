@@ -1,11 +1,11 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
+import { ConfirmModal } from '@/components/modals/confirm-modal';
 import { api } from '@/convex/_generated/api';
 import { toast } from 'sonner';
 import { useMutation } from 'convex/react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { ConfirmModal } from '@/components/modals/confirm-modal';
 
 export const Banner = ({ noteId }) => {
   const router = useRouter();

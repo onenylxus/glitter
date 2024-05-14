@@ -1,10 +1,10 @@
 'use client';
 
+import * as React from 'react';
 import { Spinner } from '@/components/spinner';
 import { UploadCloudIcon, X } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import { useDropzone } from 'react-dropzone';
-import * as React from 'react';
 
 const variants = {
   base: 'relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[200px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out',
