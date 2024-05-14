@@ -4,9 +4,10 @@ import { BlockNoteView } from '@blocknote/mantine';
 import { useCreateBlockNote } from '@blocknote/react';
 import { useEdgeStore } from '@/lib/edgestore';
 import { useTheme } from 'next-themes';
+import '@blocknote/core/fonts/inter.css';
 import '@blocknote/mantine/style.css';
 
-export const Editor = ({ data, onChange, editable = true }) => {
+const Editor = ({ data, onChange, editable = true }) => {
   const { resolvedTheme } = useTheme();
   const { edgestore } = useEdgeStore();
 
@@ -35,3 +36,5 @@ export const Editor = ({ data, onChange, editable = true }) => {
     </div>
   );
 };
+
+export default Editor;

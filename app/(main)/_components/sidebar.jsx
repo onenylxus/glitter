@@ -25,13 +25,14 @@ import { toast } from 'sonner';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { useMutation } from 'convex/react';
-import { useParams, usePathname } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useSearch } from '@/hooks/use-search';
 import { useSettings } from '@/hooks/use-settings';
 
 export const Sidebar = () => {
   const params = useParams();
   const pathname = usePathname();
+  const router = useRouter();
   const isMobile = useMediaQuery('(max-width: 768px)');
   const create = useMutation(api.notes.create);
   const search = useSearch();
@@ -116,7 +117,9 @@ export const Sidebar = () => {
   }, [isMobile, pathname]);
 
   const onCreate = () => {
-    const promise = create({ title: 'Untitled' });
+    const promise = create({ title: 'Untitled' }).then((noteId) => {
+      router.push(`/notes/${noteId}`);
+    });
     toast.promise(promise, {
       loading: 'Creaing a new note...',
       success: 'Created new note',

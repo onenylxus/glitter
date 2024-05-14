@@ -1,13 +1,19 @@
 'use client';
 
 import { Cover } from '@/components/cover';
-import { Editor } from '@/components/editor';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Toolbar } from '@/components/toolbar';
 import { api } from '@/convex/_generated/api';
+import { useMemo } from 'react';
 import { useMutation, useQuery } from 'convex/react';
+import dynamic from 'next/dynamic';
 
 const NoteIdPage = ({ params }) => {
+  const Editor = useMemo(
+    () => dynamic(() => import('@/components/editor'), { ssr: false }),
+    []
+  );
+
   const note = useQuery(api.notes.getById, { id: params.noteId });
   const update = useMutation(api.notes.update);
 
