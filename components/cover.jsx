@@ -62,7 +62,5 @@ export const Cover = ({ url, preview }) => {
 };
 
 Cover.Skeleton = function CoverSkeleton() {
-  return (
-    <Skeleton className="w-full h-[12vh]" />
-  );
+  return <Skeleton className="h-[12vh] w-full" />;
 };
