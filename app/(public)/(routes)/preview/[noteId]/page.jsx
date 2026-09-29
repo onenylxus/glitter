@@ -7,8 +7,10 @@ import { api } from '@/convex/_generated/api';
 import { useMemo } from 'react';
 import { useMutation, useQuery } from 'convex/react';
 import dynamic from 'next/dynamic';
+import { useParams } from 'next/navigation';
 
-const PreviewNoteIdPage = ({ params }) => {
+const PreviewNoteIdPage = () => {
+  const params = useParams();
   const Editor = useMemo(
     () => dynamic(() => import('@/components/editor'), { ssr: false }),
     []

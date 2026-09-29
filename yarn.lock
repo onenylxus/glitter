@@ -1143,7 +1143,7 @@
   dependencies:
     "@floating-ui/dom" "^1.8.0"
 
-"@floating-ui/react@^0.27.18":
+"@floating-ui/react@^0.27.16", "@floating-ui/react@^0.27.18":
   version "0.27.20"
   resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.27.20.tgz#353664b4a2b329e9f91f8d9150f7992b5ace20f4"
   integrity sha512-CMqMy7OaXl9W0eq1Uy7L7i2Y/anPvHmFmESd2CEw0t5YvZhcVCeo4MBevAmswRllX7Y2dEidA4ozGPunLSTQpw==
@@ -1395,6 +1395,23 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
+
+"@mantine/core@^8.3.11":
+  version "8.3.18"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-8.3.18.tgz#25d206caef1110a50671139520b1434b581a62ca"
+  integrity sha512-9tph1lTVogKPjTx02eUxDUOdXacPzK62UuSqb4TdGliI54/Xgxftq0Dfqu6XuhCxn9J5MDJaNiLDvL/1KRkYqA==
+  dependencies:
+    "@floating-ui/react" "^0.27.16"
+    clsx "^2.1.1"
+    react-number-format "^5.4.4"
+    react-remove-scroll "^2.7.1"
+    react-textarea-autosize "8.5.9"
+    type-fest "^4.41.0"
+
+"@mantine/hooks@^8.3.11":
+  version "8.3.18"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-8.3.18.tgz#7e5601c0683ed2411e3aee8fcb81a151e5341ad2"
+  integrity sha512-QoWr9+S8gg5050TQ06aTSxtlpGjYOpIllRbjYYXlRvZeTsUqiTbVfvQROLexu4rEaK+yy9Wwriwl9PMRgbLqPw==
 
 "@napi-rs/wasm-runtime@^0.2.11":
   version "0.2.12"
@@ -4957,14 +4974,7 @@ prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.2.3:
     prosemirror-state "^1.0.0"
     w3c-keyname "^2.2.0"
 
-prosemirror-model@^1.0.0, prosemirror-model@^1.20.0, prosemirror-model@^1.21.0:
-  version "1.25.3"
-  resolved "https://registry.yarnpkg.com/prosemirror-model/-/prosemirror-model-1.25.3.tgz#c657c60a361cb1e9c9f683d19118c0af50a6f7a9"
-  integrity sha512-dY2HdaNXlARknJbrManZ1WyUtos+AP97AmvqdOQtWtrrC5g4mohVX5DTi9rXNFSk09eczLq9GuNTtq3EfMeMGA==
-  dependencies:
-    orderedmap "^2.0.0"
-
-prosemirror-model@^1.25.11, prosemirror-model@^1.25.12, prosemirror-model@^1.25.4:
+prosemirror-model@1.25.12, prosemirror-model@^1.0.0, prosemirror-model@^1.21.0, prosemirror-model@^1.25.11, prosemirror-model@^1.25.12, prosemirror-model@^1.25.4:
   version "1.25.12"
   resolved "https://registry.yarnpkg.com/prosemirror-model/-/prosemirror-model-1.25.12.tgz#00232836bf4f5bdfdfe8300d00706564515bfc28"
   integrity sha512-Ue2gTmXMa7EhpLNhC7J+h4+ykD8ha12K6rrZFFKKJHBForfIStw5gJ6Zrf1mqqAa9NmpmEB4wp9bKmA4eUVjWg==
@@ -4980,16 +4990,7 @@ prosemirror-schema-list@^1.5.1:
     prosemirror-state "^1.0.0"
     prosemirror-transform "^1.7.3"
 
-prosemirror-state@^1.0.0, prosemirror-state@^1.2.2:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/prosemirror-state/-/prosemirror-state-1.4.3.tgz#94aecf3ffd54ec37e87aa7179d13508da181a080"
-  integrity sha512-goFKORVbvPuAQaXhpbemJFRKJ2aixr+AZMGiquiqKxaucC6hlpHNZHWgz5R7dS4roHiwq9vDctE//CZ++o0W1Q==
-  dependencies:
-    prosemirror-model "^1.0.0"
-    prosemirror-transform "^1.0.0"
-    prosemirror-view "^1.27.0"
-
-prosemirror-state@^1.4.4:
+prosemirror-state@1.4.4, prosemirror-state@^1.0.0, prosemirror-state@^1.2.2, prosemirror-state@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/prosemirror-state/-/prosemirror-state-1.4.4.tgz#72b5e926f9e92dcee12b62a05fcc8a2de3bf5b39"
   integrity sha512-6jiYHH2CIGbCfnxdHbXZ12gySFY/fz/ulZE333G6bPqIZ4F+TXo9ifiR86nAHpWnfoNjOb3o5ESi7J8Uz1jXHw==
@@ -5009,30 +5010,14 @@ prosemirror-tables@^1.8.5:
     prosemirror-transform "^1.10.5"
     prosemirror-view "^1.41.4"
 
-prosemirror-transform@^1.0.0, prosemirror-transform@^1.1.0, prosemirror-transform@^1.10.2, prosemirror-transform@^1.7.3:
-  version "1.10.4"
-  resolved "https://registry.yarnpkg.com/prosemirror-transform/-/prosemirror-transform-1.10.4.tgz#56419eac14f9f56612c806ae46f9238648f3f02e"
-  integrity sha512-pwDy22nAnGqNR1feOQKHxoFkkUtepoFAd3r2hbEDsnf4wp57kKA36hXsB3njA9FtONBEwSDnDeCiJe+ItD+ykw==
-  dependencies:
-    prosemirror-model "^1.21.0"
-
-prosemirror-transform@^1.10.5, prosemirror-transform@^1.12.0, prosemirror-transform@^1.12.1:
+prosemirror-transform@1.12.2, prosemirror-transform@^1.0.0, prosemirror-transform@^1.1.0, prosemirror-transform@^1.10.2, prosemirror-transform@^1.10.5, prosemirror-transform@^1.12.0, prosemirror-transform@^1.12.1, prosemirror-transform@^1.7.3:
   version "1.12.2"
   resolved "https://registry.yarnpkg.com/prosemirror-transform/-/prosemirror-transform-1.12.2.tgz#3c4291e8468f0d98941180245412f26974553a5b"
   integrity sha512-PE/aY0HEY4zczvmqrilgkUK/WautF0chvMqkmM/iN5/aPHvwrCWaQZjS6CIZp+K84YrvPFqrL+YArrfJX8xX7g==
   dependencies:
     prosemirror-model "^1.21.0"
 
-prosemirror-view@^1.0.0, prosemirror-view@^1.1.0, prosemirror-view@^1.27.0, prosemirror-view@^1.31.0:
-  version "1.40.1"
-  resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.40.1.tgz#4a12711b45a707b240a1789d45b99df6f13e7c16"
-  integrity sha512-pbwUjt3G7TlsQQHDiYSupWBhJswpLVB09xXm1YiJPdkjkh9Pe7Y51XdLh5VWIZmROLY8UpUpG03lkdhm9lzIBA==
-  dependencies:
-    prosemirror-model "^1.20.0"
-    prosemirror-state "^1.0.0"
-    prosemirror-transform "^1.1.0"
-
-prosemirror-view@^1.41.4, prosemirror-view@^1.42.3, prosemirror-view@^1.42.4:
+prosemirror-view@1.42.6, prosemirror-view@^1.0.0, prosemirror-view@^1.1.0, prosemirror-view@^1.27.0, prosemirror-view@^1.31.0, prosemirror-view@^1.41.4, prosemirror-view@^1.42.3, prosemirror-view@^1.42.4:
   version "1.42.6"
   resolved "https://registry.yarnpkg.com/prosemirror-view/-/prosemirror-view-1.42.6.tgz#d72d3ddafdc9c97db870f051f5cdd7c872eb53fc"
   integrity sha512-3g25f6hKV2bBxo3puH3EcYWmmVNSH0iWmNsMVT7sugDSpA025jgpOLarcDWr39SdzPjYMaiYtRdNtXialPSjEQ==
@@ -5071,6 +5056,11 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-number-format@^5.4.4:
+  version "5.4.5"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.4.5.tgz#5855f2ae4e4153e6231d3a36b635c38be6824c8a"
+  integrity sha512-y8O2yHHj3w0aE9XO8d2BCcUOOdQTRSVq+WIuMlLVucAm5XNjJAy+BoOJiuQMldVYVOKTMyvVNfnbl2Oqp+YxGw==
+
 react-remove-scroll-bar@^2.3.7:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz#99c20f908ee467b385b68a3469b4a3e750012223"
@@ -5090,7 +5080,7 @@ react-remove-scroll@^2.6.3:
     use-callback-ref "^1.3.3"
     use-sidecar "^1.1.3"
 
-react-remove-scroll@^2.7.2:
+react-remove-scroll@^2.7.1, react-remove-scroll@^2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.7.2.tgz#6442da56791117661978ae99cd29be9026fecca0"
   integrity sha512-Iqb9NjCCTt6Hf+vOdNIZGdTiH1QSqr27H/Ek9sv/a97gfueI/5h1s3yRi1nngzMUaOOToin5dI1dXKdXiF+u0Q==
@@ -5109,7 +5099,7 @@ react-style-singleton@^2.2.2, react-style-singleton@^2.2.3:
     get-nonce "^1.0.0"
     tslib "^2.0.0"
 
-react-textarea-autosize@^8.5.9:
+react-textarea-autosize@8.5.9, react-textarea-autosize@^8.5.9:
   version "8.5.9"
   resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-8.5.9.tgz#ab8627b09aa04d8a2f45d5b5cd94c84d1d4a8893"
   integrity sha512-U1DGlIQN5AwgjTyOEnI1oCcMuEr1pv1qOtklB2l4nyMGbHzWrI0eFsYK0zos2YWqAolJyG0IWJaqWmWj5ETh0A==
@@ -5615,6 +5605,11 @@ type-check@^0.4.0, type-check@~0.4.0:
   integrity sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==
   dependencies:
     prelude-ls "^1.2.1"
+
+type-fest@^4.41.0:
+  version "4.41.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.41.0.tgz#6ae1c8e5731273c2bf1f58ad39cbae2c91a46c58"
+  integrity sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==
 
 typed-array-buffer@^1.0.3:
   version "1.0.3"

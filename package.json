@@ -11,6 +11,12 @@
     "lint": "next lint",
     "convex": "npx convex dev"
   },
+  "resolutions": {
+    "prosemirror-model": "1.25.12",
+    "prosemirror-state": "1.4.4",
+    "prosemirror-transform": "1.12.2",
+    "prosemirror-view": "1.42.6"
+  },
   "dependencies": {
     "@blocknote/core": "0.55.0",
     "@blocknote/mantine": "0.55.0",
@@ -18,6 +24,8 @@
     "@clerk/clerk-react": "5.61.3",
     "@edgestore/react": "0.8.0",
     "@edgestore/server": "0.8.0",
+    "@mantine/core": "^8.3.11",
+    "@mantine/hooks": "^8.3.11",
     "@radix-ui/react-alert-dialog": "^1.1.23",
     "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-dialog": "^1.1.23",
