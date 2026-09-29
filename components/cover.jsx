@@ -36,12 +36,12 @@ export const Cover = ({ url, preview }) => {
     >
       {url && <Image src={url} fill alt="Cover" className="object-cover" />}
       {url && !preview && (
-        <div className="absolute bottom-5 right-5 flex items-center gap-x-2 opacity-0 group-hover:opacity-100">
+        <div className="absolute right-5 bottom-5 flex items-center gap-x-2 opacity-0 group-hover:opacity-100">
           <Button
             variant="outline"
             size="sm"
             onClick={() => coverImage.onReplace(url)}
-            className="text-xs text-muted-foreground"
+            className="text-muted-foreground text-xs"
           >
             <ImageIcon className="mr-2 h-4 w-4" />
             Change cover
@@ -50,7 +50,7 @@ export const Cover = ({ url, preview }) => {
             variant="outline"
             size="sm"
             onClick={onRemove}
-            className="text-xs text-muted-foreground"
+            className="text-muted-foreground text-xs"
           >
             <X className="mr-2 h-4 w-4" />
             Remove cover

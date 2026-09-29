@@ -51,7 +51,7 @@ export const Menu = ({ noteId }) => {
           Delete
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <div className="p-2 text-xs text-muted-foreground">
+        <div className="text-muted-foreground p-2 text-xs">
           Last edited by: {user.fullName}
         </div>
       </DropdownMenuContent>

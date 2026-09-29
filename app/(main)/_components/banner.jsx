@@ -39,7 +39,7 @@ export const Banner = ({ noteId }) => {
         size="sm"
         onClick={onRestore}
         variant="outline"
-        className="h-auto border-white bg-transparent p-1 px-2 font-normal text-white hover:bg-primary/5 hover:text-white"
+        className="hover:bg-primary/5 h-auto border-white bg-transparent p-1 px-2 font-normal text-white hover:text-white"
       >
         Restore
       </Button>
@@ -47,7 +47,7 @@ export const Banner = ({ noteId }) => {
         <Button
           size="sm"
           variant="outline"
-          className="h-auto border-white bg-transparent p-1 px-2 font-normal text-white hover:bg-primary/5 hover:text-white"
+          className="hover:bg-primary/5 h-auto border-white bg-transparent p-1 px-2 font-normal text-white hover:text-white"
         >
           Delete
         </Button>

@@ -132,7 +132,7 @@ export const Sidebar = () => {
       <aside
         ref={sidebarRef}
         className={cn(
-          'group/sidebar relative z-top flex h-full w-60 flex-col overflow-y-auto bg-secondary',
+          'group/sidebar z-top bg-secondary relative flex h-full w-60 flex-col overflow-y-auto',
           resetting && 'transtion-all duration-300 ease-in-out',
           isMobile && 'w-0'
         )}
@@ -141,7 +141,7 @@ export const Sidebar = () => {
           onClick={collapse}
           role="button"
           className={cn(
-            'absolute right-2 top-3 h-6 w-6 rounded-sm text-muted-foreground opacity-0 transition hover:bg-zinc-300 group-hover/sidebar:opacity-100 dark:hover:bg-zinc-600',
+            'text-muted-foreground absolute top-3 right-2 h-6 w-6 rounded-sm opacity-0 transition group-hover/sidebar:opacity-100 hover:bg-zinc-300 dark:hover:bg-zinc-600',
             isMobile && 'opacity-100'
           )}
         >
@@ -180,13 +180,13 @@ export const Sidebar = () => {
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
-          className="absolute right-0 top-0 h-full w-1 cursor-ew-resize bg-primary/10 opacity-0 transition group-hover/sidebar:opacity-100"
+          className="bg-primary/10 absolute top-0 right-0 h-full w-1 cursor-ew-resize opacity-0 transition group-hover/sidebar:opacity-100"
         />
       </aside>
       <div
         ref={navbarRef}
         className={cn(
-          'absolute left-60 top-0 z-top w-[calc(100%-240px)]',
+          'z-top absolute top-0 left-60 w-[calc(100%-240px)]',
           resetting && 'transition-all duration-300 ease-in-out',
           isMobile && 'left-0 w-full'
         )}
@@ -199,7 +199,7 @@ export const Sidebar = () => {
               <MenuIcon
                 onClick={resetWidth}
                 role="button"
-                className="h-6 w-6 text-muted-foreground"
+                className="text-muted-foreground h-6 w-6"
               />
             )}
           </nav>

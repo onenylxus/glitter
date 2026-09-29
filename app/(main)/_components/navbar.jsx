@@ -15,7 +15,7 @@ export const Navbar = ({ isCollapsed, onResetWidth }) => {
   const note = useQuery(api.notes.getById, { id: params.noteId });
   if (note === undefined) {
     return (
-      <nav className="flex w-full items-center justify-between bg-background px-3 py-2 dark:bg-[#1f1f1f]">
+      <nav className="bg-background flex w-full items-center justify-between px-3 py-2 dark:bg-[#1f1f1f]">
         <Title.Skeleton />
         <div className="flex items-center gap-x-2">
           <Menu.Skeleton />
@@ -29,12 +29,12 @@ export const Navbar = ({ isCollapsed, onResetWidth }) => {
 
   return (
     <>
-      <nav className="flex w-full items-center gap-x-4 bg-background px-3 py-2 dark:bg-[#1f1f1f]">
+      <nav className="bg-background flex w-full items-center gap-x-4 px-3 py-2 dark:bg-[#1f1f1f]">
         {isCollapsed && (
           <MenuIcon
             role="button"
             onClick={onResetWidth}
-            className="h-6 w-6 text-muted-foreground"
+            className="text-muted-foreground h-6 w-6"
           />
         )}
         <div className="flex w-full items-center justify-between">

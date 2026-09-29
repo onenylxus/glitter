@@ -113,7 +113,7 @@ const SingleImageDropzone = React.forwardRef(
     return (
       <div className="relative">
         {disabled && (
-          <div className="absolute inset-y-0 z-50 flex h-full w-full items-center justify-center bg-background/80">
+          <div className="bg-background/80 absolute inset-y-0 z-50 flex h-full w-full items-center justify-center">
             <Spinner size="lg" />
           </div>
         )}
@@ -150,7 +150,7 @@ const SingleImageDropzone = React.forwardRef(
           {/* Remove Image Icon */}
           {imageUrl && !disabled && (
             <div
-              className="group absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 transform"
+              className="group absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 transform"
               onClick={(e) => {
                 e.stopPropagation();
                 void onChange?.(undefined);

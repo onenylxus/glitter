@@ -72,7 +72,7 @@ export const Toolbar = ({ data, preview }) => {
             variant="outline"
             size="icon"
             onClick={onIconRemove}
-            className="rounded-full text-xs text-muted-foreground opacity-0 transition group-hover/icon:opacity-100"
+            className="text-muted-foreground rounded-full text-xs opacity-0 transition group-hover/icon:opacity-100"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -85,7 +85,7 @@ export const Toolbar = ({ data, preview }) => {
             <Button
               variant="outline"
               size="sm"
-              className="text-xs text-muted-foreground"
+              className="text-muted-foreground text-xs"
             >
               <Smile className="mr-2 h-4 w-4" />
               Add icon
@@ -97,7 +97,7 @@ export const Toolbar = ({ data, preview }) => {
             onClick={coverImage.onOpen}
             variant="outline"
             size="sm"
-            className="text-xs text-muted-foreground"
+            className="text-muted-foreground text-xs"
           >
             <ImageIcon className="mr-2 h-4 w-4" />
             Add cover
@@ -111,12 +111,12 @@ export const Toolbar = ({ data, preview }) => {
           onKeyDown={onKeyDown}
           onChange={(e) => onInput(e.target.value)}
           value={value}
-          className="resize-none break-words bg-transparent text-5xl font-bold text-[#3f3f3f] outline-none dark:text-[#cfcfcf]"
+          className="resize-none bg-transparent text-5xl font-bold wrap-break-word text-[#3f3f3f] outline-none dark:text-[#cfcfcf]"
         />
       ) : (
         <div
           onClick={enableInput}
-          className="break-words pb-[11.5px] text-5xl font-bold text-[#3f3f3f] outline-none dark:text-[#cfcfcf]"
+          className="pb-[11.5px] text-5xl font-bold wrap-break-word text-[#3f3f3f] outline-none dark:text-[#cfcfcf]"
         >
           {data.title}
         </div>

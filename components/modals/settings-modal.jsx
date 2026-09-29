@@ -17,7 +17,7 @@ export const SettingsModal = () => {
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-1">
             <Label>Appearance</Label>
-            <span className="text-[0.8rem] text-muted-foreground">
+            <span className="text-muted-foreground text-[0.8rem]">
               Customize how Glitter looks on your device
             </span>
           </div>

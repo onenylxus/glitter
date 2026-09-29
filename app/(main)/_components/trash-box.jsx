@@ -66,12 +66,12 @@ export const TrashBox = () => {
         <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-7 bg-secondary px-2 focus-visible:ring-transparent"
+          className="bg-secondary h-7 px-2 focus-visible:ring-transparent"
           placeholder="Filter by page title..."
         />
       </div>
       <div className="mt-2 px-1 pb-1">
-        <p className="hidden pb-2 text-center text-xs text-muted-foreground last:block">
+        <p className="text-muted-foreground hidden pb-2 text-center text-xs last:block">
           No notes found.
         </p>
         {filteredNotes &&
@@ -80,7 +80,7 @@ export const TrashBox = () => {
               key={note._id}
               role="button"
               onClick={() => onClick(note._id)}
-              className="flex w-full items-center justify-between rounded-sm text-sm text-primary hover:bg-primary/5"
+              className="text-primary hover:bg-primary/5 flex w-full items-center justify-between rounded-sm text-sm"
             >
               <span className="truncate pl-2">{note.title}</span>
               <div className="flex items-center">
@@ -89,14 +89,14 @@ export const TrashBox = () => {
                   role="button"
                   className="rounded-sm p-2 hover:bg-zinc-200 dark:hover:bg-zinc-600"
                 >
-                  <Undo className="h-4 w-4 text-muted-foreground" />
+                  <Undo className="text-muted-foreground h-4 w-4" />
                 </div>
                 <ConfirmModal onConfirm={() => onRemove(note._id)}>
                   <div
                     role="button"
                     className="rounded-sm p-2 hover:bg-zinc-200 dark:hover:bg-zinc-600"
                   >
-                    <Trash className="h-4 w-4 text-muted-foreground" />
+                    <Trash className="text-muted-foreground h-4 w-4" />
                   </div>
                 </ConfirmModal>
               </div>

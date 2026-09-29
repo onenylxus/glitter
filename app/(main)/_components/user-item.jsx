@@ -19,7 +19,7 @@ export const UserItem = () => {
       <DropdownMenuTrigger asChild>
         <div
           role="button"
-          className="flex w-full items-center p-3 text-sm hover:bg-primary/5"
+          className="hover:bg-primary/5 flex w-full items-center p-3 text-sm"
         >
           <div className="flex items-center gap-x-2 md:max-w-[150px]">
             <Avatar className="h-5 w-5">
@@ -29,7 +29,7 @@ export const UserItem = () => {
               {user.fullName}&apos;s Notebook
             </span>
           </div>
-          <ChevronsLeftRight className="ml-2 h-4 w-4 rotate-90 text-muted-foreground" />
+          <ChevronsLeftRight className="text-muted-foreground ml-2 h-4 w-4 rotate-90" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -39,11 +39,11 @@ export const UserItem = () => {
         forceMount
       >
         <div className="flex flex-col space-y-4 p-2">
-          <p className="text-xs font-medium leading-none text-muted-foreground">
+          <p className="text-muted-foreground text-xs leading-none font-medium">
             {user.emailAddresses[0].emailAddress}
           </p>
           <div className="flex items-center gap-x-2">
-            <div className="rounded-md bg-secondary p-1">
+            <div className="bg-secondary rounded-md p-1">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={user.imageUrl} />
               </Avatar>
@@ -59,7 +59,7 @@ export const UserItem = () => {
         <DropdownMenuItem>
           <SignOutButton
             asChild
-            className="w-full cursor-pointer text-start text-muted-foreground"
+            className="text-muted-foreground w-full cursor-pointer text-start"
           >
             Logout
           </SignOutButton>

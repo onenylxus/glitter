@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] });
 const RootLayout = ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ConvexClientProvider>
           <EdgeStoreProvider>
             <ThemeProvider
